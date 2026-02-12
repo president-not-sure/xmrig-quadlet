@@ -1,0 +1,3 @@
+[submodule "tor-quadlet"]
+	path = tor-quadlet
+	url = https://github.com/president-not-sure/tor-quadlet.git
