@@ -86,9 +86,6 @@ sudo systemctl enable --now \
     podman-auto-update.timer
 ```
 
-> [!IMPORTANT]
-> Ensure network/container IP addresses are unique on this host.
-
 > [!NOTE]
 > If the host runs a DNS server on all interfaces, add `DisableDNS=true` under the `[Network]` section of each `.network` unit file to prevent port conflicts on UDP 53.
 
