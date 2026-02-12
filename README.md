@@ -26,50 +26,48 @@ A Tor secured XMRig client managed by Podman Quadlet.
 
 ### Clone
 
-#### Default XMRig branch
+- Default XMRig branch
 
-```bash
-git clone --recurse-submodules https://github.com/president-not-sure/xmrig-quadlet.git
-cd xmrig-quadlet
-```
+  ```bash
+  git clone --recurse-submodules https://github.com/president-not-sure/xmrig-quadlet.git
+  cd xmrig-quadlet
+  ```
 
-#### MoneroOcean pool (https://moneroocean.stream) XMRig branch
+- MoneroOcean pool (https://moneroocean.stream) XMRig branch
 
-```bash
-git clone --recurse-submodules --branch moneroocean https://github.com/president-not-sure/xmrig-quadlet.git
-cd xmrig-quadlet
-```
+  ```bash
+  git clone --recurse-submodules --branch moneroocean https://github.com/president-not-sure/xmrig-quadlet.git
+  cd xmrig-quadlet
+  ```
 
 ### config.json
 
-1. Generate a `config.json` using this wizard `https://xmrig.com/wizard`.
-2. `sudo mkdir -p /etc/xmrig`
-3. Copy it to `/etc/xmrig`.
-
-#### Minimal `config.json` example
-
-```json
-{
-    "autosave": true,
-    "cpu": true,
-    "opencl": false,
-    "cuda": false,
-    "pools": [
-        {
-            "coin": "monero",
-            "algo": null,
-            "url": "pooladdress.onion:port",
-            "user": "wallet_address",
-            "pass": "worker_name",
-            "tls": false,
-            "socks5": "xmrig-tor:9050",
-            "keepalive": true,
-            "nicehash": false
-        }
-    ]
-}
-
-```
+1. Generate a `config.json` using this wizard `https://xmrig.com/wizard` or modify and use this minimal working example:
+    ```json
+    {
+        "autosave": true,
+        "cpu": true,
+        "opencl": false,
+        "cuda": false,
+        "pools": [
+            {
+                "coin": "monero",
+                "algo": null,
+                "url": "pooladdress.onion:port",
+                "user": "wallet_address",
+                "pass": "worker_name",
+                "tls": false,
+                "socks5": "xmrig-tor:9050",
+                "keepalive": true,
+                "nicehash": false
+            }
+        ]
+    }
+    ```
+2. Install `config.json` to `/etc/xmrig`.
+    ```bash
+    sudo install -vD -m 644 -t /etc/xmrig config.json
+    ```
 
 ### Quadlet
 
@@ -101,11 +99,22 @@ install -vD -m 0644 -t ~/.local/share/applications toggle/xmrig.desktop
 
 ## Usage
 
-### Start the quadlet without having to reboot
+### Start the Quadlet without rebooting
 
-```bash
-sudo systemctl start xmrig.service
-```
+- Directly
+
+  ```bash
+  sudo systemctl unmask xmrig.service
+  sudo systemctl start xmrig.service
+  ```
+
+- Toggle on if not running
+
+  ```bash
+  xmrig
+  ```
+
+- Or use the desktop file in the desktop environment.
 
 > [!NOTE]
 > The first run will take more time because it needs to build the first image. To see build progress:
