@@ -24,7 +24,7 @@ A Tor secured XMRig client managed by Podman Quadlet.
 
 ## Install
 
-### Download the project
+### Clone
 
 #### Default XMRig branch
 
@@ -71,7 +71,7 @@ cd xmrig-quadlet
 
 ```
 
-### Core App
+### Quadlet
 
 ```bash
 sudo podman quadlet install --replace tor-quadlet/tor
