@@ -7,20 +7,22 @@ BindsTo=xmrig-tor.container
 ContainerName=xmrig
 Image=xmrig.build
 AutoUpdate=local
+
+# Network
 HostName=xmrig
 AddHost=xmrig-tor:10.1.1.10
 AddHost=xmrig:10.1.1.20
 Network=xmrig-tor-internal.network:ip=10.1.1.20
+
+# Resources
 SecurityLabelDisable=true
 PodmanArgs=--cpu-shares=1
 Volume=/etc/xmrig/config.json:/app/config.json:rw
-
 # hugepages
 Volume=/dev/hugepages:/dev/hugepages:rw
 Volume=/proc/sys/vm:/proc/sys/vm:rw
 Volume=/sys/devices/system/node:/sys/devices/system/node:rw
 Volume=/sys/kernel/mm/hugepages:/sys/kernel/mm/hugepages:rw
-
 # msr mod
 AddCapability=CAP_SYS_RAWIO
 AddDevice=/dev/cpu
