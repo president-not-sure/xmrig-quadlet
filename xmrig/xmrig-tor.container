@@ -14,13 +14,13 @@ Network=xmrig-tor-internal.network:ip=10.1.1.10
 Network=xmrig-tor-external.network
 DropCapability=all
 NoNewPrivileges=true
-PodmanArgs=--cpus=1 --memory=256m --memory-swap=256m
+PodmanArgs=--cpus=1 --cpu-shares=1 --memory=256m --memory-swap=256m
 HealthCmd=curl -sSLx socks5h://10.1.1.10:9050 'https://check.torproject.org/api/ip' | grep -qE '"IsTor"\s*:\s*true'
 HealthTimeout=5s
 HealthInterval=1m
 HealthRetries=5
 HealthOnFailure=restart
-Exec=--SocksPort 10.1.1.10:9050
+Exec=--SocksPort xmrig-tor:9050
 
 [Service]
 RestartSec=1m
