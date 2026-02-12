@@ -6,7 +6,7 @@ A Tor secured XMRig client managed by Podman Quadlet.
 
 - All XMRig traffic must go through Tor
   - XMRig container -> Internal network -> Tor proxy container -> External network (internet)
-- Automatically rebuilds images from upstream
+- Automatically rebuilds images from upstream:
   - XMRig: weekly
   - Tor: daily
 - Automatically restarts when a new image is built
