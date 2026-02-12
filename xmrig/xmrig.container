@@ -1,7 +1,6 @@
 [Unit]
 Description=XMRig container
 After=local-fs.target xmrig-tor.container
-Requires=xmrig-tor.container
 BindsTo=xmrig-tor.container
 
 [Container]
