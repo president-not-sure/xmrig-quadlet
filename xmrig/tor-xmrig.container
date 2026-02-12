@@ -1,0 +1,28 @@
+[Unit]
+Description=tor-xmrig container
+After=local-fs.target network-online.target
+PartOf=xmrig.container
+
+[Container]
+ContainerName=tor-xmrig
+Image=tor.build
+AutoUpdate=local
+HostName=tor-xmrig
+AddHost=tor-xmrig:10.1.1.10
+AddHost=xmrig:10.1.1.20
+Network=tor-xmrig-internal.network:ip=10.1.1.10
+Network=tor-xmrig-external.network
+PodmanArgs=--cpus=2 --memory=512m --memory-swap=512m
+HealthCmd=curl -sSLx socks5h://10.1.1.10:9050 'https://check.torproject.org/api/ip' | grep -qE '"IsTor"\s*:\s*true'
+HealthTimeout=5s
+HealthInterval=1m
+HealthRetries=5
+HealthOnFailure=restart
+Exec=--SocksPort 10.1.1.10:9050
+
+[Service]
+RestartSec=1m
+TimeoutStartSec=5m
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if systemctl is-active --quiet xmrig.service; then
+    sudo systemctl mask --now xmrig.service
+else 
+    sudo systemctl unmask xmrig.service
+    sudo systemctl start xmrig.service
+fi
