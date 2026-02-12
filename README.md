@@ -85,6 +85,12 @@ sudo systemctl enable --now \
     podman-auto-update.timer
 ```
 
+> [!IMPORTANT]
+> Ensure network/container IP addresses are unique on this host.
+
+> [!NOTE]
+> If the host runs a DNS server on all interfaces, add `DisableDNS=true` under the `[Network]` section of each `.network` unit file to prevent port conflicts on UDP 53.
+
 > [!NOTE]
 > The minimum donation percentage has been reduced to 0 via a patch, but the default has been kept at 1. This means that you can adjust it to 0 in the config.json or the command line.
 
