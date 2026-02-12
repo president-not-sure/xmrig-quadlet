@@ -79,6 +79,7 @@ sudo podman quadlet install --replace xmrig
 sudo install -vD -m 644 -t /etc/systemd/system \
     tor-quadlet/timers/tor-build.timer \
     timers/xmrig-build.timer
+sudo systemctl daemon-reload
 sudo systemctl enable --now \
     tor-build.timer \
     xmrig-build.timer \
@@ -118,6 +119,7 @@ sudo rm -rfv \
     /etc/systemd/system/tor-build.timer \
     /usr/local/bin/xmrig \
     ~/.local/share/applications/xmrig.desktop
+sudo systemctl daemon-reload
 ```
 
 ## Troubleshooting
