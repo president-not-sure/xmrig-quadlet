@@ -73,6 +73,9 @@ cd xmrig-quadlet
 
 ### Quadlet
 
+> [!WARNING]
+> If the host runs a DNS server on all interfaces, add `DisableDNS=true` under the `[Network]` section of each `.network` unit file to prevent port conflicts.
+
 ```bash
 sudo podman quadlet install --replace tor-quadlet/tor
 sudo podman quadlet install --replace xmrig
@@ -87,9 +90,6 @@ sudo systemctl enable --now \
 ```
 
 > [!NOTE]
-> If the host runs a DNS server on all interfaces, add `DisableDNS=true` under the `[Network]` section of each `.network` unit file to prevent port conflicts on UDP 53.
-
-> [!NOTE]
 > The minimum donation percentage has been reduced to 0 via a patch, but the default has been kept at 1. This means that you can adjust it to 0 in the config.json or the command line.
 
 ### Quick On/Off Toggle
@@ -99,9 +99,30 @@ sudo install -vD -m 0755 -t /usr/local/bin toggle/xmrig
 install -vD -m 0644 -t ~/.local/share/applications toggle/xmrig.desktop
 ```
 
+## Usage
+
+### Start the quadlet without having to reboot
+
+```bash
+sudo systemctl start xmrig.service
+```
+
 > [!NOTE]
-> - The first run will take more time because it needs to build the first image. `journalctl -f -u xmrig-build.service` to see build progress.
-> - `sudo podman logs --follow xmrig` or any Podman GUI for XMRig logs.
+> The first run will take more time because it needs to build the first image. To see build progress:
+>
+> ```bash
+> journalctl -f -u tor-build.service
+> journalctl -f -u xmrig-build.service
+> ```
+
+### Show logs
+
+```bash
+sudo podman logs --follow xmrig-tor
+sudo podman logs --follow xmrig
+```
+
+Or any other Podman GUI.
 
 ## Uninstall
 
