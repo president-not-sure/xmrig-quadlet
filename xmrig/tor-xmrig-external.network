@@ -1,6 +1,0 @@
-[Unit]
-Description=Tor-XMRig external network
-
-[Network]
-NetworkName=tor-xmrig-external
-NetworkDeleteOnStop=true

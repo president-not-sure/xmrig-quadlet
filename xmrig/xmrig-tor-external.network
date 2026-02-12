@@ -1,0 +1,6 @@
+[Unit]
+Description=XMRig Tor external network
+
+[Network]
+NetworkName=xmrig-tor-external
+NetworkDeleteOnStop=true

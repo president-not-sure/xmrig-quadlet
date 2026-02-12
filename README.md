@@ -62,7 +62,7 @@ cd xmrig-quadlet
             "user": "wallet_address",
             "pass": "worker_name",
             "tls": false,
-            "socks5": "tor-xmrig:9050",
+            "socks5": "xmrig-tor:9050",
             "keepalive": true,
             "nicehash": false
         }

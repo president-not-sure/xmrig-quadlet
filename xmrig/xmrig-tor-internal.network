@@ -1,8 +1,8 @@
 [Unit]
-Description=Tor-XMRig internal shared network
+Description=XMRig Tor internal shared network
 
 [Network]
-NetworkName=tor-xmrig-internal
+NetworkName=xmrig-tor-internal
 Internal=true
 NetworkDeleteOnStop=true
 Subnet=10.1.1.0/24

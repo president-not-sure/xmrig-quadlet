@@ -1,17 +1,17 @@
 [Unit]
 Description=XMRig container
-After=local-fs.target tor-xmrig.container
-Requires=tor-xmrig.container
-BindsTo=tor-xmrig.container
+After=local-fs.target xmrig-tor.container
+Requires=xmrig-tor.container
+BindsTo=xmrig-tor.container
 
 [Container]
 ContainerName=xmrig
 Image=xmrig.build
 AutoUpdate=local
 HostName=xmrig
-AddHost=tor-xmrig:10.1.1.10
+AddHost=xmrig-tor:10.1.1.10
 AddHost=xmrig:10.1.1.20
-Network=tor-xmrig-internal.network:ip=10.1.1.20
+Network=xmrig-tor-internal.network:ip=10.1.1.20
 SecurityLabelDisable=true
 Volume=/etc/xmrig/config.json:/app/config.json:rw
 
@@ -29,7 +29,7 @@ Volume=/sys/module/msr/parameters/allow_writes:/sys/module/msr/parameters/allow_
 [Service]
 Restart=on-failure
 RestartSec=1m
-ExecStartPre=/bin/sh -c "while ! /bin/podman healthcheck run tor-xmrig; do sleep 10; done"
+ExecStartPre=/bin/sh -c "while ! /bin/podman healthcheck run xmrig-tor; do sleep 10; done"
 TimeoutStartSec=5m
 
 [Install]
