@@ -19,7 +19,7 @@ RUN dnf install -y \
 COPY xmrig.patch /tmp
 
 # Build XMRig
-RUN git clone --depth=1 https://github.com/xmrig/xmrig.git /xmrig && \
+RUN git clone --depth=1 https://github.com/MoneroOcean/xmrig.git /xmrig && \
     cd /xmrig && \
     git apply --verbose /tmp/xmrig.patch && \
     mkdir -p /xmrig/build && \
