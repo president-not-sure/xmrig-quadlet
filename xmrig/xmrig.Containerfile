@@ -32,14 +32,8 @@ RUN git clone --depth=1 https://github.com/xmrig/xmrig.git /xmrig && \
     ldd /xmrig/build/xmrig
 
 # Staging XMRig
-RUN install -vD -m 755 -t /staging/app \
-        /xmrig/build/xmrig && \
-    install -vD -m 755 -t /staging/lib64 \
-        /lib64/libm.so* \
-        /lib64/libc.so* \
-        /lib64/ld-linux-x86-64.so* && \
-    echo "Staging tree before copying it to the final image:" && \
-    tree -a /staging
+RUN install -vD -m 755 -t /staging/app /xmrig/build/xmrig && \
+    dnf --use-host-config --installroot=/staging -y install glibc
 
 FROM scratch
 

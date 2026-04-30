@@ -13,7 +13,7 @@ A Tor secured XMRig client managed by Podman Quadlet.
 - Automatically starts/stops on reboot
 - No updates required unless upstream introduces breaking changes
 - Minimal image size:
-  - XMRig: ~15MB
+  - XMRig: ~120MB
   - Tor: ~160MB
 - Optional CLI and desktop toggle for persistent enable/disable
 
